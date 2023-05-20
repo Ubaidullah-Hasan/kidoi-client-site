@@ -29,12 +29,12 @@ const Navbar = () => {
                     <Link to="/"><img src={logo} alt="LOGO" /></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal gap-6 px-1">
+                    <ul className="menu menu-horizontal gap-6 px-1 font-bold uppercase">
                         {menu}
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <FaUserCircle className='w-6 h-6' />
+                <div className="navbar-end pe-5 md:pe-0">
+                    <FaUserCircle className='w-6 h-6 ' />
                     {/* <img src={} alt="" /> */}
                 </div>
             </div>
