@@ -6,6 +6,7 @@ import NoFoundPage from "../Pages/NoFoundPage/NoFoundPage";
 import Login from "../Pages/User/Login";
 import Register from "../Pages/User/Register";
 import Blogs from "../Pages/Blogs/Blogs";
+import AllToys from "../Pages/AllToys/AllToys";
 
 const router = createBrowserRouter([
     {
@@ -24,7 +25,11 @@ const router = createBrowserRouter([
             {
                 path: "/blogs",
                 element: <Blogs></Blogs>
-            }            
+            },
+            {
+                path: "/alltoys",
+                element: <AllToys></AllToys>
+            }          
         ]
     },
 ]);

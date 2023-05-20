@@ -23,7 +23,6 @@ const Navbar = () => {
     }
 
     const [isHovered, setIsHovered] = useState(false);
-    console.log(isHovered)
 
     const menu = <>
         <li className='cursor-pointer'><Link to="/">Home</Link></li>
