@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from "../../assets/logo.png"
 import { Link } from 'react-router-dom';
 import { FaUserCircle } from "react-icons/fa";
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 
 const Navbar = () => {
+    const {user} = useContext(AuthContext);
+    // console.log(user);
 
     const menu = <>
         <li className='cursor-pointer'> Home </li>
@@ -34,8 +37,13 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end pe-5 md:pe-0">
-                    <FaUserCircle className='w-6 h-6 ' />
-                    {/* <img src={} alt="" /> */}
+                    {
+                        // user ? 
+                        //     <img src={} alt="" /> 
+                        //     :
+                        //     <FaUserCircle className='w-6 h-6 ' />
+                    }
+                    
                 </div>
             </div>
         </div>

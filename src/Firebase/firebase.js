@@ -4,15 +4,15 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+
 const firebaseConfig = {
-    apiKey: "AIzaSyDxpc7vObRmPI9CgdmBDFT2P25-QEnBcu8",
-    authDomain: "kidoi-toy-shop.firebaseapp.com",
-    projectId: "kidoi-toy-shop",
-    storageBucket: "kidoi-toy-shop.appspot.com",
-    messagingSenderId: "203031626878",
-    appId: "1:203031626878:web:4ff024c7f16f83138e442f",
+    apiKey: import.meta.env.VITE_APIKEY,
+    authDomain: import.meta.env.VITE_AUTHDOMAIN,
+    projectId: import.meta.env.VITE_PROJECTID,
+    storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+    messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+    appId: import.meta.env.VITE_APPID
 };
-console.log(process.env.FIREBASE_APIKEY);
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
