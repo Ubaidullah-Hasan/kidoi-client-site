@@ -26,26 +26,26 @@ const Navbar = () => {
     console.log(isHovered)
 
     const menu = <>
-        <li className='cursor-pointer'> Home </li>
-        <li className='cursor-pointer'> All Toys</li>
+        <li className='cursor-pointer'><Link to="/">Home</Link></li>
+        <li className='cursor-pointer'><Link to="/alltoys">All Toys</Link></li>
         {
             user?.email && <>
-                <li className='cursor-pointer'> My Toys</li>
-                <li className='cursor-pointer'> Add A Toy</li>
+                <li className='cursor-pointer'><Link className='/mytoys'>My Toys</Link></li>
+                <li className='cursor-pointer'><Link to='/addToy'> Add A Toy</Link></li>
             </>
         }
-        <li className='cursor-pointer'> Blogs</li>
+        <li className='cursor-pointer'><Link to='/blogs'>Blogs</Link></li>
     </>
 
     return (
         <div className='bg-orange-300'>
-            <div className="navbar md:w-[90%] mx-auto">
+            <div className="navbar md:w-[90%] mx-auto py-4">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
-                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-4 shadow bg-base-100  w-52 gap-5 left-[-8px]">
+                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-4 shadow bg-base-100  w-52 md:gap-5 left-[-8px]">
                             {menu}
                         </ul>
                     </div>
@@ -63,7 +63,7 @@ const Navbar = () => {
                                 <img src={user?.photoURL} alt="User Image" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} className='w-6 h-6 rounded-full cursor-pointer' />
                                 <button onClick={signOut}  className='btn btn-sm rounded-full font-normal ms-3'>Log Out</button>
                                 {
-                                    user.displayName && <button className={`absolute bottom-[-40px] left-[5px] md:left-[200px] btn btn-xs rounded-full font-extralight px-5 ${isHovered ? 'block' : 'hidden'}`}>{user.displayName}</button>
+                                    user.displayName && <button className={` absolute bottom-[-40px] left-[5px] md:left-[200px] btn btn-xs  rounded-full font-extralight px-5 ${isHovered ? 'block' : 'hidden'}`}>{user.displayName}</button>
                                 }
                             </>
                             :
