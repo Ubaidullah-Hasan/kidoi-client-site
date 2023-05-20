@@ -1,9 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Register = () => {
     const { createUser, profileUpdate } = useContext(AuthContext);
+    const [error, setError] = useState('');
+
     // console.log(profileUpdate)
     const handleForm = (event) => {
         event.preventDefault();
@@ -16,9 +19,22 @@ const Register = () => {
             .then(result => {
                 console.log(result.user);
                 updateUser(name, photo)
+                form.reset();
+                Swal.fire(
+                    'Good job!',
+                    'Successfully create account!!',
+                    'success'
+                )
+                setError('')
             })
-            .catch(error => {
-                console.log(error.message);
+            .catch(err => {
+                setError(err.message)
+                console.log(err.message);
+                Swal.fire(
+                    'Registration Failed!',
+                    `${error}`,
+                    'error'
+                )
             })
 
     }

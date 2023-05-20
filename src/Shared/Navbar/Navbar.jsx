@@ -1,19 +1,39 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import logo from "../../assets/logo.png"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaUserCircle } from "react-icons/fa";
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 
 const Navbar = () => {
-    const {user} = useContext(AuthContext);
-    // console.log(user);
+    const navigate = useNavigate();
+    const { user, logOut } = useContext(AuthContext);
+    
+
+    const handleLog = () => {
+        navigate("/login");
+    }
+    const signOut = () => {
+        logOut()
+            .then(() => {
+                console.log("SIGN OUT!!")
+            }).catch((error) => {
+                console.log(error.message);
+            });
+    }
+
+    const [isHovered, setIsHovered] = useState(false);
+    console.log(isHovered)
 
     const menu = <>
         <li className='cursor-pointer'> Home </li>
         <li className='cursor-pointer'> All Toys</li>
-        <li className='cursor-pointer'> My Toys</li>
-        <li className='cursor-pointer'> Add A Toy</li>
+        {
+            user?.email && <>
+                <li className='cursor-pointer'> My Toys</li>
+                <li className='cursor-pointer'> Add A Toy</li>
+            </>
+        }
         <li className='cursor-pointer'> Blogs</li>
     </>
 
@@ -36,14 +56,23 @@ const Navbar = () => {
                         {menu}
                     </ul>
                 </div>
-                <div className="navbar-end pe-5 md:pe-0">
+                <div className="navbar-end pe-5 md:pe-0 relative">
                     {
-                        // user ? 
-                        //     <img src={} alt="" /> 
-                        //     :
-                        //     <FaUserCircle className='w-6 h-6 ' />
+                        user?.photoURL ?
+                            <>
+                                <img src={user?.photoURL} alt="User Image" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} className='w-6 h-6 rounded-full cursor-pointer' />
+                                <button onClick={signOut}  className='btn btn-sm rounded-full font-normal ms-3'>Log Out</button>
+                                {
+                                    user.displayName && <button className={`absolute bottom-[-40px] left-[5px] md:left-[200px] btn btn-xs rounded-full font-extralight px-5 ${isHovered ? 'block' : 'hidden'}`}>{user.displayName}</button>
+                                }
+                            </>
+                            :
+                            <>
+                                <FaUserCircle className='w-6 h-6 ' />
+                                <button onClick={handleLog} className='btn btn-sm rounded-full font-normal ms-3'>Log in</button>
+                            </>
                     }
-                    
+
                 </div>
             </div>
         </div>
