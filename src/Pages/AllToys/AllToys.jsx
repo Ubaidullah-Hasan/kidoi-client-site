@@ -7,7 +7,7 @@ const AllToys = () => {
     const [limit, setLimit] = useState(20);
     const [search, setSearch] = useState("");
     useEffect(() => {
-        fetch(`http://localhost:3000/toys?limit=${limit}&search=${search}`)
+        fetch(`https://kidoi-server.vercel.app/toys?limit=${limit}&search=${search}`)
             .then(res => res.json())
             .then(data => {
                 setToys(data);
@@ -19,7 +19,7 @@ const AllToys = () => {
     // total product count 
     const [totaltoy, setTotaltoy] = useState(0);
     useEffect(() => {
-        fetch("http://localhost:3000/totalToys")
+        fetch("https://kidoi-server.vercel.app/totalToys")
             .then(res => res.json())
             .then(data => {
                 setTotaltoy((data.totalToy))

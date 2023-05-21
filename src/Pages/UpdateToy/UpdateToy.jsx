@@ -1,88 +1,71 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const UpdateToy = () => {
+
+    const toy = useLoaderData()
+    console.log(toy)
+    const { details, price, quantity, _id } = toy
+
+
     const handleUpdate = (event) => {
         event.preventDefault();
         const form = event.target;
-        const pName = form.pName.value;
-        const sName = form.sName.value;
-        const category = form.category.value;
-        const email = form.email.value;
         const price = form.price.value;
-        const rating = form.rating.value;
         const quantity = form.quantity.value;
-        const picture = form.picture.value;
         const description = form.textarea.value;
 
-        console.log(pName, sName, category, email, price, rating, quantity, picture, description)
+        const update = { price, quantity, description };
 
-        // const order = { fName, date, phone, email, message, img, title, price, };
-        // fetch("https://car-doctor-server-ubaidullah-hasan.vercel.app/bookings", {
-        //     method: "POST",
-        //     headers: {
-        //         "content-type": "application/json"
-        //     },
-        //     body: JSON.stringify(order)
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data)
-        //         if (data.insertedId) {
-        //             alert("Chackout complete");
-        //         }
-        //     })
+        fetch(`https://kidoi-server.vercel.app/toys/${_id}`, {
+            method: "PUT",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(update)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount) {
+                    Swal.fire(
+                        'Good job!',
+                        'You update the product!',
+                        'success'
+                    )
+                }
+
+            })
+
+
     }
 
     return (
         <div className='w-[90%] mx-auto'>
             <form onSubmit={handleUpdate} className=" bg-base-200 px-[97px] py-[60px] rounded-md space-y-6 my-[90px]">
                 <h1 className='mb-12 font-bold text-5xl text-slate-800 text-center '>Update Product!</h1>
-                {/* row 1 */}
-                <div className='flex justify-between gap-6'>
-                    <div className="form-control w-full">
-                        <input type="text" placeholder="Product Name" name="pName" className="input focus:outline-none" />
-                    </div>
-                    <div className="form-control w-full">
-                        <input type="text" placeholder="Shop Name" name='sName' className="input focus:outline-none" />
-                    </div>
-                </div>
-                {/* row 2 */}
-                <div className='flex justify-between gap-6'>
-                    <div className="form-control w-full">
-                        <input type="email" name='email' placeholder="Your Email" className="input focus:outline-none" />
-                    </div>
-                    <div className="form-control w-full">
-                        <input type="text" name='category' placeholder="Category" className="input focus:outline-none" />
-                    </div>
-                </div>
+
                 {/* row 3 */}
                 <div className='flex justify-between gap-6'>
                     <div className="form-control w-full">
-                        <input type="text" name='price' placeholder="Price" className="input focus:outline-none" />
+                        <input type="text" name='price' defaultValue={`${price}`} placeholder="Price" className="input focus:outline-none" />
                     </div>
+
                     <div className="form-control w-full">
-                        <input type="text" name='rating' placeholder="Rating" className="input focus:outline-none" />
-                    </div>
-                </div>
-                {/* row 4 */}
-                <div className='flex justify-between gap-6'>
-                    <div className="form-control w-full">
-                        <input type="text" name='quantity' placeholder="Quantity" className="input focus:outline-none" />
-                    </div>
-                    <div className="form-control w-full">
-                        <input type="text" name='picture' placeholder="Picture URL" className="input focus:outline-none" />
+                        <input type="text" name='quantity' defaultValue={quantity} placeholder="Quantity" className="input focus:outline-none" />
                     </div>
                 </div>
                 {/* row 5 */}
                 <div className="form-control">
-                    <textarea name='textarea' className="textarea resize-none h-[180px] focus:outline-none" placeholder="Product Description"></textarea>
+                    <textarea name='textarea' defaultValue={details} className="textarea resize-none h-[180px] focus:outline-none" placeholder="Product Description"></textarea>
                 </div>
 
                 <div className="form-control mt-6">
-                    <button className="btn bg-red-500 hover:bg-red-600 border-none" >Add Product</button>
+                    <button className="btn bg-green-600 hover:bg-green-700 border-none" >Update Product</button>
                 </div>
-            </form>
-        </div>
+            </form >
+        </div >
     );
 };
 

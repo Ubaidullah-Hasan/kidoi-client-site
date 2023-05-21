@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 
 const AddToy = () => {
 
@@ -15,22 +16,26 @@ const AddToy = () => {
         const picture = form.picture.value;
         const description = form.textarea.value;
 
-        console.log(pName, sName, category, email, price, rating, quantity, picture, description)
+        const addToy = { pName, sName, category, email, price, rating, quantity, picture, description }
 
-        // fetch("https://car-doctor-server-ubaidullah-hasan.vercel.app/bookings", {
-        //     method: "POST",
-        //     headers: {
-        //         "content-type": "application/json"
-        //     },
-        //     body: JSON.stringify(order)
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data)
-        //         if (data.insertedId) {
-        //             alert("Chackout complete");
-        //         }
-        //     })
+        fetch("https://kidoi-server.vercel.app/toys", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(addToy)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.insertedId) {
+                    Swal.fire(
+                        'Good job!',
+                        'You added a product!',
+                        'success'
+                    )
+                }
+            })
 
     }
 

@@ -12,6 +12,7 @@ import PrivateRoute from "./PrivateRoute";
 import Home from "../Pages/Home/Home";
 import AddToy from "../Pages/AddToy/AddToy";
 import MyToys from "../Pages/MyToys/MyToys";
+import UpdateToy from "../Pages/UpdateToy/UpdateToy";
 
 const router = createBrowserRouter([
     {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>,
-                loader: () => fetch("http://localhost:3000/toys")
+                loader: () => fetch("https://kidoi-server.vercel.app/toys")
             },
             {
                 path: "/login",
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
             {
                 path: "/toydetails/:id",
                 element: <PrivateRoute><ToyDetails></ToyDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:3000/toys/${params.id}`)
+                loader: ({ params }) => fetch(`https://kidoi-server.vercel.app/toys/${params.id}`)
             },
             {
                 path: "/addToy",
@@ -51,8 +52,14 @@ const router = createBrowserRouter([
             },
             {
                 path: "/mytoys",
-                element: <PrivateRoute><MyToys></MyToys></PrivateRoute>
-            }       
+                element: <PrivateRoute><MyToys></MyToys></PrivateRoute>,
+                loader: () => fetch("https://kidoi-server.vercel.app/toys")
+            },
+            {
+                path: "/update/:id",
+                element: <PrivateRoute><UpdateToy></UpdateToy></PrivateRoute>,
+                loader: ({ params }) => fetch(`https://kidoi-server.vercel.app/toys/${params.id}`)
+            }
         ]
     },
 ]);

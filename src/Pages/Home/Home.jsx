@@ -3,6 +3,8 @@ import Banner from './Banner';
 import { useLoaderData } from 'react-router-dom';
 import Gallery from './Gallery';
 import ShopByCategory from './ShopByCategory';
+import Subscribe from './Subscribe';
+import CardBanner from './CardBanner';
 
 const Home = () => {
     const toys = useLoaderData();
@@ -11,6 +13,8 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
+
+            <CardBanner></CardBanner>
 
             {/* **************** Gallery section ***************** */}
             <div className=' bg-slate-200 py-10 md:py-14'>
@@ -30,6 +34,8 @@ const Home = () => {
             {/* **************** Gallery section end ***************** */}
 
             <ShopByCategory></ShopByCategory>
+
+            <Subscribe></Subscribe>
 
         </div>
     );

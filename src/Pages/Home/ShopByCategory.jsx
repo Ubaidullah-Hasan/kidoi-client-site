@@ -8,7 +8,7 @@ const ShopByCategory = () => {
     const [categoryToy, setSategoryToy] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/toy?category=${category}`)
+        fetch(`https://kidoi-server.vercel.app/toy?category=${category}`)
             .then(res => res.json())
             .then(data => setSategoryToy(data))
     }, [category])
