@@ -29,7 +29,7 @@ const Navbar = () => {
         <li className='cursor-pointer'><Link to="/alltoys">All Toys</Link></li>
         {
             user?.email && <>
-                <li className='cursor-pointer'><Link className='/mytoys'>My Toys</Link></li>
+                <li className='cursor-pointer'><Link to='/mytoys'>My Toys</Link></li>
                 <li className='cursor-pointer'><Link to='/addToy'> Add A Toy</Link></li>
             </>
         }
