@@ -1,14 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const CategoryCard = ({toy}) => {
+    const {user} = useContext(AuthContext);
 
     const { _id, name, picture, price, rating } = toy;
 
+    const handleToast = () => {
+        if (!user){
+            Swal.fire(
+                'Log In?',
+                'You have to log in first to view detailsThat thing is still around?',
+                'question'
+            )
+        }
+    }
+
     return (
         <div className="card bg-base-100 shadow-xl rounded-none">
-            <figure><img src={picture} alt="Toy Image" /></figure>
+            <figure><img src={picture} alt="Toy Image"  /></figure>
             <div className="card-body">
                 <h2 className="card-title">
                     {name}
@@ -16,7 +29,7 @@ const CategoryCard = ({toy}) => {
                 </h2>
                 <div className="card-actions mt-3">
                     <div className="badge badge-outline text-red-500">${price}</div>
-                    <button className="badge border-red-500 bg-red-500 text-white "><Link to={`/toydetails/${_id}`} >Details <FaArrowRight className='inline text-[12px] ms-2' /> </Link></button>
+                    <button onClick={handleToast} className="badge border-red-500 bg-red-500 text-white "><Link to={`/toydetails/${_id}`} >Details <FaArrowRight className='inline text-[12px] ms-2' /> </Link></button>
                 </div>
             </div>
         </div>
