@@ -33,7 +33,8 @@ const Login = () => {
     const handleGoogleLogin = () => {
         googleSignin()
         .then(result => {
-            console.log(result.user)
+            console.log(result.user);
+            navigate(path);
         })
         .catch(error => {
             console.log(error.message)

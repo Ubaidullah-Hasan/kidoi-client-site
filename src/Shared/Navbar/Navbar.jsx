@@ -37,7 +37,7 @@ const Navbar = () => {
     </>
 
     return (
-        <div className='bg-orange-300'>
+        <div className='bg-red-400'>
             <div className="navbar md:w-[90%] mx-auto py-4">
                 <div className="navbar-start">
                     <div className="dropdown">
