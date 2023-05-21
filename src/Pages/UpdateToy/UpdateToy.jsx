@@ -1,8 +1,7 @@
 import React from 'react';
 
-const AddToy = () => {
-
-    const handleAddProduct = (event) => {
+const UpdateToy = () => {
+    const handleUpdate = (event) => {
         event.preventDefault();
         const form = event.target;
         const pName = form.pName.value;
@@ -17,6 +16,7 @@ const AddToy = () => {
 
         console.log(pName, sName, category, email, price, rating, quantity, picture, description)
 
+        // const order = { fName, date, phone, email, message, img, title, price, };
         // fetch("https://car-doctor-server-ubaidullah-hasan.vercel.app/bookings", {
         //     method: "POST",
         //     headers: {
@@ -31,13 +31,12 @@ const AddToy = () => {
         //             alert("Chackout complete");
         //         }
         //     })
-
     }
 
     return (
         <div className='w-[90%] mx-auto'>
-            <form onSubmit={handleAddProduct} className=" bg-base-200 px-[97px] py-[60px] rounded-md space-y-6 my-[90px]">
-                <h1 className='mb-12 font-bold text-5xl text-slate-800 text-center '>Add Product!</h1>
+            <form onSubmit={handleUpdate} className=" bg-base-200 px-[97px] py-[60px] rounded-md space-y-6 my-[90px]">
+                <h1 className='mb-12 font-bold text-5xl text-slate-800 text-center '>Update Product!</h1>
                 {/* row 1 */}
                 <div className='flex justify-between gap-6'>
                     <div className="form-control w-full">
@@ -87,4 +86,4 @@ const AddToy = () => {
     );
 };
 
-export default AddToy;
+export default UpdateToy;
