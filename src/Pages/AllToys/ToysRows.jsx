@@ -28,7 +28,7 @@ const ToysRows = ({toy}) => {
                     {quantity}
                 </td>
                 <th>
-                    <button className="btn bg-red-500 hover:bg-red-400 border-0 btn-xs rounded-full"><Link to={`/toydetails/${_id}`}>details</Link></button>
+                    <button ><Link className="btn bg-red-500 hover:bg-red-400 border-0 btn-xs rounded-full" to={`/toydetails/${_id}`}>details</Link></button>
                 </th>
             </tr>
         </>
