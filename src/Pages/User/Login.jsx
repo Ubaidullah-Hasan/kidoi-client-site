@@ -1,10 +1,14 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2'
 
 
 const Login = () => {
+    const location = useLocation();
+    const path = location?.state?.from?.pathname || "/";
+    const navigate = useNavigate();
+
     const { login, googleSignin } = useContext(AuthContext);
     const [error, setError] = useState('');
 
@@ -18,7 +22,7 @@ const Login = () => {
         .then(result => {
             console.log(result.user)
             form.reset();
-            
+            navigate(path);
         })
         .catch(error => {
             console.log(error)

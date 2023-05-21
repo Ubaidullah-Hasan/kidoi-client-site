@@ -7,6 +7,8 @@ import Login from "../Pages/User/Login";
 import Register from "../Pages/User/Register";
 import Blogs from "../Pages/Blogs/Blogs";
 import AllToys from "../Pages/AllToys/AllToys";
+import ToyDetails from "../Pages/AllToys/ToyDetails";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -29,7 +31,11 @@ const router = createBrowserRouter([
             {
                 path: "/alltoys",
                 element: <AllToys></AllToys>
-            }          
+            },
+            {
+                path: "/toydetails",
+                element: <PrivateRoute><ToyDetails></ToyDetails></PrivateRoute>,
+            }         
         ]
     },
 ]);
