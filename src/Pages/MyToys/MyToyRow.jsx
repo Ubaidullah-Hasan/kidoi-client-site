@@ -1,39 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import Swal from 'sweetalert2';
 
 const MyToyRow = ({ toy, handleDelete }) => {
     const { picture, name, subCategory, sellerName, price, _id } = toy;
-
-    // const handleDelete = (id) => {
-    //     Swal.fire({
-    //         title: 'Are you sure?',
-    //         text: "You won't delete this!",
-    //         icon: 'warning',
-    //         showCancelButton: true,
-    //         confirmButtonColor: '#3085d6',
-    //         cancelButtonColor: '#d33',
-    //         confirmButtonText: 'Yes, delete it!'
-    //     }).then((result) => {
-    //         if (result.isConfirmed) {
-    //             fetch(`https://kidoi-server.vercel.app/toys/${id}`, {
-    //                 method: "DELETE",
-    //             })
-    //                 .then(res => res.json())
-    //                 .then(data => {
-    //                     if (data.deletedCount) {
-    //                         console.log(data)
-    //                         Swal.fire(
-    //                             'Good job!',
-    //                             'You delete the product!',
-    //                             'success'
-    //                         )
-    //                     }
-
-    //                 })
-    //         }
-    //     })
-    // }
 
     return (
         <tr>

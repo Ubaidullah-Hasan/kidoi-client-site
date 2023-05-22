@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
-import Swal from 'sweetalert2'
+import useTitle from '../../CustomHooks/useTitle';
 
 
 const Login = () => {
+    useTitle("Login")
     const location = useLocation();
     const path = location?.state?.from?.pathname || "/";
     const navigate = useNavigate();

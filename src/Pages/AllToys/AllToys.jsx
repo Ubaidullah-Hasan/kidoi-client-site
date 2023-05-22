@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import ToysRows from './ToysRows';
+import useTitle from '../../CustomHooks/useTitle';
 
 const AllToys = () => {
+    useTitle("All toys")
     const [load, setLoad] = useState(true);
     const [toys, setToys] = useState([]);
     const [limit, setLimit] = useState(20);

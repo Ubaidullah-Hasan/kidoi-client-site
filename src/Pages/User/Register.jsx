@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
+import useTitle from '../../CustomHooks/useTitle';
 
 const Register = () => {
-    const { createUser, profileUpdate } = useContext(AuthContext);
+    useTitle("Register")
+    const { createUser, profileUpdate, googleSignin } = useContext(AuthContext);
     const [error, setError] = useState('');
 
     // console.log(profileUpdate)
@@ -49,8 +51,17 @@ const Register = () => {
     const handleLogin = () => {
 
     }
-    const handleGoogleLogin = () => {
 
+    const navigate = useNavigate();
+    const handleGoogleLogin = () => {
+        googleSignin()
+            .then(result => {
+                console.log(result.user);
+                navigate('/', {replace:true});
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
     }
     return (
         <div>

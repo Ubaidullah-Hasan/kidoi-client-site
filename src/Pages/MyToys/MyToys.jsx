@@ -2,8 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import MyToyRow from './MyToyRow';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
+import useTitle from '../../CustomHooks/useTitle';
 
 const MyToys = () => {
+    useTitle("My toys")
     const { user } = useContext(AuthContext)
 
     const [myToys, setMyToys] = useState([]);
@@ -13,7 +15,6 @@ const MyToys = () => {
             .then(res => res.json())
             .then(data => setMyToys(data))
     }, [user.email])
-    console.log(myToys)
 
     const handleDelete = (id) => {
         Swal.fire({
@@ -34,8 +35,6 @@ const MyToys = () => {
                         if (data.deletedCount) {
                             const remaining = myToys.filter(toy => toy._id !== id)
                             setMyToys(remaining)
-                            console.log(id)
-                            console.log(data)
                             Swal.fire(
                                 'Good job!',
                                 'You delete the product!',

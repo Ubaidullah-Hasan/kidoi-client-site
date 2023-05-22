@@ -1,6 +1,8 @@
 import React from 'react';
+import useTitle from '../../CustomHooks/useTitle';
 
 const Blogs = () => {
+    useTitle("Blog")
     return (
         <div className='w-[90%] mx-auto my-4 flex flex-col gap-4'>
             <div className='border py-6 px-5'>

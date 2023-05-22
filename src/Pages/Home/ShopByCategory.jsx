@@ -16,11 +16,11 @@ const ShopByCategory = () => {
 
     return (
         <div className='w-[90%] mx-auto my-16'>
-            <div className='mb-5 md:mb-7'>
+            <div data-aos="fade-right" className='mb-5 md:mb-7'>
                 <h1 className='font-bold text-xl md:text-4xl text-slate-800 text-center '>Shop by category</h1>
                 <hr className='border-2	border-red-500 w-[100px] mx-auto rounded-full mt-2 md:mt-4' />
             </div>
-            <Tabs>
+            <Tabs data-aos="fade-left">
                 <TabList className="md:font-bold pt-3 mb-3 md:bg-[#C1DFE9] md:text-center md:space-x-3 flex justify-center">
                     <Tab className="btn w-[118px] md:w-auto bg-white text-black hover:bg-white rounded-none" onClick={() => setCategory("Sports Cars")}>Sports Cars</Tab>
                     <Tab className="btn w-[118px] md:w-auto bg-white text-black hover:bg-white rounded-none" onClick={() => setCategory("Race Car Sets")}>Race Car Sets</Tab>

@@ -21,7 +21,7 @@ const CategoryCard = ({toy}) => {
 
     return (
         <div className="card bg-base-100 shadow-xl rounded-none">
-            <figure><img src={picture} alt="Toy Image"  /></figure>
+            <figure><img data-aos="flip-left" data-aos-easing="ease-out-cubic" src={picture} alt="Toy Image"  /></figure>
             <div className="card-body">
                 <h2 className="card-title">
                     {name}
