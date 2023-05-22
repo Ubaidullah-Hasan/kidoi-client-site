@@ -13,7 +13,7 @@ const CategoryCard = ({toy}) => {
         if (!user){
             Swal.fire(
                 'Log In?',
-                'You have to log in first to view detailsThat thing is still around?',
+                'You have to log in first to view details!',
                 'question'
             )
         }
