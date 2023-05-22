@@ -53,7 +53,6 @@ const router = createBrowserRouter([
             {
                 path: "/mytoys",
                 element: <PrivateRoute><MyToys></MyToys></PrivateRoute>,
-                loader: () => fetch("https://kidoi-server.vercel.app/toys")
             },
             {
                 path: "/update/:id",

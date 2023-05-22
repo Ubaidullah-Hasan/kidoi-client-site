@@ -1,22 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const AddToy = () => {
+    const {user} = useContext(AuthContext);
 
     const handleAddProduct = (event) => {
         event.preventDefault();
         const form = event.target;
-        const pName = form.pName.value;
-        const sName = form.sName.value;
-        const category = form.category.value;
+        const name = form.pName.value;
+        const sellerName = form.sName.value;
+        const subCategory = form.category.value;
         const email = form.email.value;
         const price = form.price.value;
         const rating = form.rating.value;
         const quantity = form.quantity.value;
         const picture = form.picture.value;
-        const description = form.textarea.value;
+        const details = form.textarea.value;
 
-        const addToy = { pName, sName, category, email, price, rating, quantity, picture, description }
+        const addToy = { name, sellerName, subCategory, email, price, rating, quantity, picture, details }
 
         fetch("https://kidoi-server.vercel.app/toys", {
             method: "POST",
@@ -55,7 +57,7 @@ const AddToy = () => {
                 {/* row 2 */}
                 <div className='flex justify-between gap-6'>
                     <div className="form-control w-full">
-                        <input type="email" name='email' placeholder="Your Email" className="input focus:outline-none" />
+                        <input type="email" name='email' defaultValue={user.email} readOnly placeholder="Your Email" className="input focus:outline-none" />
                     </div>
                     <div className="form-control w-full">
                         <input type="text" name='category' placeholder="Category" className="input focus:outline-none" />

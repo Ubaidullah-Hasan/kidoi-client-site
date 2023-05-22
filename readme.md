@@ -5,13 +5,13 @@
 3. It's looks like very **gorgeous**
 4. This tehme easily changeable
 5. Here we used 
-   * HTML
-   * CSS
-   * BOOTSTRAP
+   * HTML & CSS
+   * Tailwind & DaisyUI
    * REACT JS
-   * REACT BOOTSTRAP
+   * REACT ICON 
    * AWESOME REACT COMPONENT & LIBRARIES
-   * REACT ICON
+   * MONGODB
+   * EXPRESS JS
 
 ## Live Application URL
 ### **https://kidoi-toy-shop.web.app/** You can **[Visit Site](https://kidoi-toy-shop.web.app/)** here.
